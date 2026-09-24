@@ -1,0 +1,102 @@
+WILDCAT CAPITAL -- fact_transactions.csv DATA PROFILE
+Source file: C:\GitHub Repos\mis3060-bi-ai\HW02\02_Data\Raw\fact_transactions.csv
+
+=== 3. Shape ===
+Rows:    298,772
+Columns: 9
+
+=== 4. Column Names and Data Types ===
+     column   dtype
+     txn_id   int64
+  client_id   int64
+ advisor_id   int64
+security_id float64
+   txn_date     str
+   txn_type     str
+     shares float64
+      price float64
+     amount float64
+
+=== 5. Missing Values ===
+             missing  pct_of_rows
+txn_id             0          0.0
+client_id          0          0.0
+advisor_id         0          0.0
+security_id   101597         34.0
+txn_date           0          0.0
+txn_type           0          0.0
+shares        101597         34.0
+price         101597         34.0
+amount             0          0.0
+
+=== 6. Descriptive Statistics (numeric columns) ===
+                count       mean       std     min  25th pct     median   75th pct        max
+txn_id       298772.0  149386.50  86248.19    1.00  74693.75  149386.50  224079.25  298772.00
+client_id    298772.0    1249.66    722.72    1.00    625.00    1246.00    1873.00    3192.00
+advisor_id   298772.0      12.80      7.27    1.00      6.00      13.00      19.00      25.00
+security_id  197175.0     249.32    144.27    1.00    125.00     248.00     375.00     500.00
+shares       197175.0     247.77    147.69 -499.63    123.53     248.77     373.83     500.00
+price        197175.0     255.13    141.53   10.00    132.76     255.09     377.93     500.00
+amount       298772.0   54075.17  50494.32   13.33  12078.93   41220.48   81827.01  249302.33
+
+=== 7. Transaction Type Breakdown ===
+              count  percent
+txn_type                    
+Buy           83556    27.97
+Sell          59755    20.00
+Dividend      53864    18.03
+Deposit       35981    12.04
+Advisory Fee  35766    11.97
+Withdrawal    29850     9.99
+
+=== 8. Unique Entities ===
+Unique clients (client_id):      2,700
+Unique advisors (advisor_id):    25
+Unique securities (security_id): 500
+
+=== 9. Date Range ===
+Earliest txn_date: 2020-01-01
+Latest txn_date:   2024-12-30
+
+=== 10. Duplicate Check (txn_id) ===
+Duplicate txn_id values: 0
+
+=== 11. Amount Distribution ===
+Mean amount:   $54,075.17
+Median amount: $41,220.49
+Skewness:      1.15 (right-skewed)
+
+=== 12. Amount by Transaction Type (sorted by mean, highest first) ===
+               count mean_amount median_amount
+txn_type                                      
+Dividend      53,864  $64,077.30    $48,805.60
+Buy           83,556  $63,738.49    $47,893.58
+Sell          59,755  $63,635.55    $48,080.16
+Deposit       35,981  $50,588.07    $50,760.33
+Withdrawal    29,850  $49,997.34    $49,843.42
+Advisory Fee  35,766   $7,375.17       $859.12
+
+=== 13. Correlation Matrix (shares, price, amount) ===
+        shares  price  amount
+shares    1.00   0.00    0.65
+price     0.00   1.00    0.64
+amount    0.65   0.64    1.00
+
+Strongest correlations (by absolute value):
+  1. shares - amount: 0.65
+  2. price - amount: 0.64
+  3. shares - price: 0.00
+
+=== 14. Shares by Transaction Type (min, max, negative count) ===
+             min_shares max_shares  negative_count
+txn_type                                          
+Advisory Fee        n/a        n/a               0
+Buy           -499.6323   499.9973             836
+Deposit             n/a        n/a               0
+Dividend         1.0024   499.9981               0
+Sell              1.003   499.9961               0
+Withdrawal          n/a        n/a               0
+Total rows with negative shares: 836
+
+=== 15. Shape Check ===
+OK: shape matches the expected 298,772 rows x 9 columns.
