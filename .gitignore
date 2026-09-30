@@ -1,0 +1,18 @@
+# Data files — keep large raw datasets out of the repo
+*.csv
+
+# ...but track homework deliverable CSVs (e.g. HW03/earnings_history.csv).
+# Both casings listed so the rule holds on case-sensitive systems too.
+!hw*/*.csv
+!HW*/*.csv
+
+# Python
+__pycache__/
+*.pyc
+_venv/
+.venv/
+venv/
+
+# OS / editor
+.DS_Store
+Thumbs.db
